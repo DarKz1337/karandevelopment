@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KaranDevelopment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background-color: #121212;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 20px 40px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    header.scrolled {
+      background-color: rgba(0, 0, 0, 1);
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    .menu {
+      display: flex;
+      gap: 20px;
+    }
+
+    .menu a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .menu a:hover {
+      color: #f44336;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 30px;
+      height: 4px;
+      background-color: #fff;
+      transition: transform 0.3s ease;
+    }
+
+    .hamburger.open div:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.open div:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open div:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .menu-mobile {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
+
+    .menu-mobile.open {
+      transform: translateX(0);
+    }
+
+    .menu-mobile a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 2rem;
+      margin: 20px 0;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .menu-mobile a:hover {
+      color: #f44336;
+    }
+
+    section {
+      padding: 100px 20px;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      animation: fadeInSection 2s ease-out;
+      color: white;
+      overflow: hidden;
+    }
+
+    .section-title {
+      font-size: 4rem;
+      font-weight: 800;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInText 2s ease-out forwards;
+    }
+
+    .section-text {
+      color: #ccc;
+      line-height: 1.8;
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInText 2s ease-out 0.3s forwards;
+      transition: transform 0.3s ease;
+    }
+
+    .section-text:hover {
+      transform: translateY(-5px);
+    }
+
+    @keyframes fadeInText {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInSection {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+.service-item {
+      background-color: #333;
+      padding: 30px;
+      border-radius: 10px;
+      margin: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInService 1s ease-out forwards;
+    }
+
+    .service-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .service-item h3 {
+      color: #f44336;
+      font-size: 1.8rem;
+    }
+
+    .service-item p {
+      font-size: 1.2rem;
+      color: #ccc;
+    }
+
+    /* Animation for Services */
+    @keyframes fadeInService {
+      0% {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Contact Section */
+    .contact-form {
+      display: grid;
+      gap: 20px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .contact-form input, .contact-form textarea {
+      padding: 15px;
+      background-color: #333;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-form input:focus, .contact-form textarea:focus {
+      background-color: #f44336;
+      outline: none;
+    }
+
+    .contact-form button {
+      padding: 15px;
+      background-color: #f44336;
+      color: white;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-form button:hover {
+      background-color: #b71c1c;
+    }
+
+    /* Smooth Background */
+    .background-effect {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(45deg, #212121, #2c2c2c, #121212, #1f1f1f);
+      background-size: 400% 400%;
+      animation: smoothBackground 15s ease infinite;
+      z-index: -1;
+    }
+
+    @keyframes smoothBackground {
+      0% {
+        background-position: 400% 0;
+      }
+      50% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 400% 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header id="header">
+    <div class="logo">KaranDevelopment</div>
+    <div class="menu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu -->
+  <div class="menu-mobile" id="menu-mobile">
+    <a href="#home" onclick="closeMenu()">Home</a>
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+  </div>
+
+  <!-- Background Effect -->
+  <div class="background-effect"></div>
+
+  <!-- Hero Section -->
+  <section id="home">
+    <h1 class="section-title">Welcome to KaranDevelopment</h1>
+    <p class="section-text">
+      We bring your ideas to life with clean, scalable digital solutions. From web development to custom software, we create innovative products tailored to your business.
+    </p>
+  </section>
+
+<!-- About Section -->
+  <section id="about">
+    <h2 class="section-title">About Us</h2>
+    <p class="section-text">
+      At KaranDevelopment, we are driven by passion, innovation, and a deep commitment to excellence. Our team is dedicated to bringing your digital ideas to life with precision and creativity. We believe in the power of technology to transform businesses, making them more efficient, scalable, and accessible to the world. Our approach to software development is simple: create intuitive, user-centric products that solve real-world problems. We don't just build software; we craft experiences that drive success and empower our clients to reach their full potential. Whether you need a stunning website, a complex software solution, or an intuitive UI/UX design, we are here to help you navigate the digital landscape with confidence and clarity.
+    </p>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="service-item">
+      <h3>Web Development</h3>
+      <p>Our web development team specializes in creating dynamic, responsive websites that are tailored to your business. Whether you're looking for a simple landing page or a complex web application, we ensure a seamless user experience with a focus on performance, security, and scalability. Every site we build is designed to engage your audience and drive business growth.</p>
+    </div>
+    <div class="service-item">
+      <h3>Software Development</h3>
+      <p>We develop custom software solutions designed to meet the specific needs of your business. From enterprise-level applications to smaller, specialized tools, we ensure your software is not only functional but also intuitive and easy to use. Our goal is to help your business streamline operations, boost productivity, and enhance customer satisfaction with custom-built solutions.</p>
+    </div>
+    <div class="service-item">
+      <h3>UI/UX Design</h3>
+      <p>Design is at the heart of everything we do. Our UI/UX team crafts beautiful, user-friendly interfaces that deliver seamless experiences across all devices. We focus on understanding your users' needs and behaviors, ensuring that every design decision enhances usability and accessibility while staying true to your brand’s identity.</p>
+    </div>
+    <div class="service-item">
+      <h3>Cloud Services</h3>
+      <p>Cloud computing has revolutionized the way businesses operate. Our cloud services help businesses migrate to the cloud, scale their infrastructure, and ensure data security. We offer cloud consulting, architecture design, and management services, enabling your business to leverage the power of cloud technology for enhanced agility, cost savings, and performance.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <form class="contact-form" id="contact-form">
+      <input type="text" id="name" name="name" placeholder="Your Name" required />
+      <input type="email" id="email" name="email" placeholder="Your Email" required />
+      <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <script>
+    // Initialize EmailJS
+    emailjs.init("bgwo7DNyn3Bq6J8YK");
+
+    document.getElementById('contact-form').addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+
+      emailjs.sendForm('service_4tpdp0i', 'template_juh3cew', this)
+        .then((response) => {
+          alert("Message sent successfully!");
+          document.getElementById('contact-form').reset();
+        })
+        .catch((error) => {
+          alert("There was an error sending your message.");
+        });
+    });
+  </script>
+</body>
+</html>
