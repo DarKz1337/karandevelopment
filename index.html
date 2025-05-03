@@ -1,0 +1,378 @@
+<!-- Full updated HTML starts here -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>KaranDevelopment</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/ScrollTrigger.min.js"></script>
+  <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <style>
+    body {
+      font-family: 'Outfit', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background-color: #121212;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 20px 40px;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: white;
+      letter-spacing: 1px;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger div {
+      width: 30px;
+      height: 4px;
+      background-color: #fff;
+      transition: transform 0.3s ease;
+    }
+
+    .hamburger.open div:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.open div:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.open div:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    .menu-mobile {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateX(100%);
+      transition: transform 0.3s ease;
+      z-index: 999;
+    }
+
+    .menu-mobile.open {
+      transform: translateX(0);
+    }
+
+    .menu-mobile a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 2rem;
+      margin: 20px 0;
+      text-transform: uppercase;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .menu-mobile a:hover {
+      color: #f44336;
+      transform: scale(1.1);
+    }
+
+    section {
+      padding: 100px 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      color: white;
+      opacity: 0;
+    }
+
+    .section-title {
+      font-size: 4rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .section-text {
+      font-size: 1.2rem;
+      max-width: 800px;
+      color: #e7eaee;
+      line-height: 1.8;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .section-text:hover {
+      transform: scale(1.03);
+      color: rgb(206, 199, 199);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .service-item {
+      background-color: #39393a;
+      padding: 30px;
+      border-radius: 15px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      opacity: 0;
+      transform: translateY(50px);
+    }
+
+    .service-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(145, 2, 2, 0.6);
+    }
+
+    .service-item h3 {
+  color: #d6d0cf; /* Light grayish-white color */
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+    .service-item p {
+      color: #f5f2f2;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Background and animation styles */
+    .background-effect {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  opacity: 0.1; /* Reduced opacity for a more subtle effect */
+  filter: blur(2px); /* Reduced blur to 2px */
+  z-index: -1; /* Behind all other content */
+}
+
+/* Smooth animation for the background */
+@keyframes animateBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+/* Optional: Remove bubble effect */
+.background-effect::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0px; /* Remove the size of the bubble */
+  height: 0px;
+  background: transparent;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: none; /* Disable any bubble animation */
+}
+
+@keyframes animateBackground {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+
+
+    .contact-form button {
+      margin-top: 10px;
+      padding: 10px 20px;
+      border: none;
+      background: #f44336;
+      color: white;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .contact-form button:hover {
+      background: #d32f2f;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="background-effect"></div>
+  <header>
+    <div class="logo">KaranDevelopment</div>
+    <div class="hamburger" onclick="toggleMenu()" id="hamburger">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </header>
+
+  <div class="menu-mobile" id="menu">
+    <a href="#home" onclick="closeMenu()">Home</a>
+    <a href="#about" onclick="closeMenu()">About</a>
+    <a href="#services" onclick="closeMenu()">Services</a>
+    <a href="#portfolio" onclick="closeMenu()">Portfolio</a>
+    <a href="#testimonials" onclick="closeMenu()">Testimonials</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+  </div>
+
+  <section id="home">
+    <h1 class="section-title">Welcome to KaranDevelopment</h1>
+    <p class="section-text">We create scalable, clean, and high-performing digital solutions that power up your business.</p>
+  </section>
+
+  <section id="about">
+    <h2 class="section-title">About Us</h2>
+    <p class="section-text">At KaranDevelopment, we are more than just developers; we are passionate creators, committed to bringing your ideas to life through innovative technology. With a blend of cutting-edge development and a deep understanding of your business needs, we craft digital solutions that empower you to reach new heights.</p>
+  </section>
+
+  <section id="services">
+    <h2 class="section-title">Our Services</h2>
+    <div class="service-grid">
+      <div class="service-item">
+        <h3>Web Development</h3>
+        <p>Custom websites that combine responsive design, optimized performance, and modern technologies. We build everything from landing pages to complex web apps tailored to your needs.</p>
+      </div>
+      <div class="service-item">
+        <h3>UI/UX Design</h3>
+        <p>We design engaging and intuitive interfaces that enhance user satisfaction and product success. Focused on usability, aesthetics, and interaction to deliver standout digital experiences.</p>
+      </div>
+      <div class="service-item">
+        <h3>Cloud Services</h3>
+        <p>Deploy and manage scalable cloud infrastructure that optimizes speed, storage, and security. Whether it's AWS, Azure, or another provider, we make the cloud work for you.</p>
+      </div>
+      <div class="service-item">
+        <h3>Software Development</h3>
+        <p>Robust and efficient software solutions tailored to your business processes. From tools and automation to custom platforms, we build high-quality software that solves real problems.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="portfolio">
+    <h2 class="section-title">Portfolio</h2>
+    <p class="section-text">Coming Soon</p>
+  </section>
+
+  <section id="testimonials">
+    <h2 class="section-title">Testimonials</h2>
+    <p class="section-text">Coming Soon</p>
+  </section>
+
+  <section id="contact">
+    <h2 class="section-title">Contact Us</h2>
+    <div class="contact-form">
+      <form id="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <script>
+    emailjs.init("bgwo7DNyn3Bq6J8YK");
+
+    document.getElementById('contact-form')?.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      emailjs.sendForm('service_4tpdp0i', 'template_juh3cew', this)
+        .then(() => {
+          alert("Message sent successfully!");
+          this.reset();
+        })
+        .catch(() => {
+          alert("There was an error sending your message.");
+        });
+    });
+
+    function toggleMenu() {
+      const menu = document.getElementById("menu");
+      const burger = document.getElementById("hamburger");
+      menu.classList.toggle("open");
+      burger.classList.toggle("open");
+    }
+
+    function closeMenu() {
+      document.getElementById("menu").classList.remove("open");
+      document.getElementById("hamburger").classList.remove("open");
+    }
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    document.querySelectorAll("section").forEach((section, i) => {
+      gsap.to(section, {
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+        },
+        opacity: 1,
+        duration: 1,
+        y: -30,
+        ease: "power2.out",
+        delay: i * 0.1
+      });
+    });
+
+    document.querySelectorAll(".service-item").forEach((card, index) => {
+      gsap.to(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+        },
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        delay: index * 0.2,
+        ease: "power2.out"
+      });
+    });
+  </script>
+</body>
+</html>
