@@ -1,9 +1,9 @@
-<!-- Full updated HTML starts here -->
+<!-- START OF FINAL HTML -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KaranDevelopment</title>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,9 +14,9 @@
     body {
       font-family: 'Outfit', sans-serif;
       margin: 0;
-      padding: 0;
-      overflow-x: hidden;
       background-color: #121212;
+      color: white;
+      overflow-x: hidden;
     }
 
     html {
@@ -25,23 +25,21 @@
 
     header {
       position: fixed;
+      width: 100%;
       top: 0;
       left: 0;
-      width: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
       padding: 20px 40px;
+      background-color: rgba(0, 0, 0, 0.9);
       z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      transition: background-color 0.3s ease-in-out;
     }
 
     .logo {
       font-size: 1.8rem;
       font-weight: 800;
       color: white;
-      letter-spacing: 1px;
     }
 
     .hamburger {
@@ -54,8 +52,8 @@
     .hamburger div {
       width: 30px;
       height: 4px;
-      background-color: #fff;
-      transition: transform 0.3s ease;
+      background: white;
+      transition: 0.3s ease;
     }
 
     .hamburger.open div:nth-child(1) {
@@ -76,7 +74,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(0, 0, 0, 0.95);
+      background: rgba(0, 0, 0, 0.95);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -91,13 +89,12 @@
     }
 
     .menu-mobile a {
-      color: #fff;
-      text-decoration: none;
+      color: white;
       font-size: 2rem;
       margin: 20px 0;
-      text-transform: uppercase;
       font-weight: 600;
-      transition: all 0.3s;
+      text-decoration: none;
+      transition: 0.3s;
     }
 
     .menu-mobile a:hover {
@@ -105,130 +102,72 @@
       transform: scale(1.1);
     }
 
+    .background-effect {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      background-size: cover;
+      background-attachment: fixed;
+      opacity: 0.1;
+      filter: blur(2px);
+      z-index: -1;
+    }
+
     section {
       padding: 100px 20px;
       min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       text-align: center;
       position: relative;
-      color: white;
       opacity: 0;
     }
 
     .section-title {
-      font-size: 4rem;
+      font-size: 3.5rem;
       font-weight: 800;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     .section-text {
+      max-width: 900px;
+      margin: auto;
       font-size: 1.2rem;
-      max-width: 800px;
-      color: #e7eaee;
       line-height: 1.8;
-      transition: transform 0.3s ease, color 0.3s ease;
+      color: #e0e0e0;
     }
 
-    .section-text:hover {
-      transform: scale(1.03);
-      color: rgb(206, 199, 199);
+    .service-block {
+      max-width: 1000px;
+      margin: 60px auto;
+      text-align: left;
     }
 
-    .service-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
+    .service-block h3 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+      color: #ffffff;
     }
 
-    .service-item {
-      background-color: #39393a;
-      padding: 30px;
-      border-radius: 15px;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      opacity: 0;
-      transform: translateY(50px);
+    .service-block p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #cccccc;
     }
 
-    .service-item:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 25px rgba(145, 2, 2, 0.6);
+    .contact-form input,
+    .contact-form textarea {
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      width: 100%;
     }
-
-    .service-item h3 {
-  color: #d6d0cf; /* Light grayish-white color */
-  font-size: 1.8rem;
-  margin-bottom: 10px;
-}
-
-    .service-item p {
-      color: #f5f2f2;
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    /* Background and animation styles */
-    .background-effect {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-image: url('https://images.unsplash.com/photo-1579548122080-c35fd6820ecb?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  opacity: 0.1; /* Reduced opacity for a more subtle effect */
-  filter: blur(2px); /* Reduced blur to 2px */
-  z-index: -1; /* Behind all other content */
-}
-
-/* Smooth animation for the background */
-@keyframes animateBackground {
-  0% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  100% {
-    background-position: 0% 0%;
-  }
-}
-
-/* Optional: Remove bubble effect */
-.background-effect::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0px; /* Remove the size of the bubble */
-  height: 0px;
-  background: transparent;
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  animation: none; /* Disable any bubble animation */
-}
-
-@keyframes animateBackground {
-  0% {
-    background-position: 0% 0%;
-  }
-  50% {
-    background-position: 100% 100%;
-  }
-  100% {
-    background-position: 0% 0%;
-  }
-}
-
 
     .contact-form button {
-      margin-top: 10px;
-      padding: 10px 20px;
-      border: none;
+      padding: 12px 24px;
       background: #f44336;
+      border: none;
       color: white;
       font-weight: 600;
       border-radius: 8px;
@@ -240,6 +179,13 @@
       background: #d32f2f;
     }
 
+
+footer {
+      text-align: center;
+      padding: 20px;
+      color: #999;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
@@ -247,9 +193,7 @@
   <header>
     <div class="logo">KaranDevelopment</div>
     <div class="hamburger" onclick="toggleMenu()" id="hamburger">
-      <div></div>
-      <div></div>
-      <div></div>
+      <div></div><div></div><div></div>
     </div>
   </header>
 
@@ -269,28 +213,30 @@
 
   <section id="about">
     <h2 class="section-title">About Us</h2>
-    <p class="section-text">At KaranDevelopment, we are more than just developers; we are passionate creators, committed to bringing your ideas to life through innovative technology. With a blend of cutting-edge development and a deep understanding of your business needs, we craft digital solutions that empower you to reach new heights.</p>
+    <p class="section-text">We are passionate developers who combine creativity with functionality to deliver outstanding results. Whether you're building your first digital product or scaling your business tech, we’re here to help you succeed.</p>
   </section>
 
   <section id="services">
     <h2 class="section-title">Our Services</h2>
-    <div class="service-grid">
-      <div class="service-item">
-        <h3>Web Development</h3>
-        <p>Custom websites that combine responsive design, optimized performance, and modern technologies. We build everything from landing pages to complex web apps tailored to your needs.</p>
-      </div>
-      <div class="service-item">
-        <h3>UI/UX Design</h3>
-        <p>We design engaging and intuitive interfaces that enhance user satisfaction and product success. Focused on usability, aesthetics, and interaction to deliver standout digital experiences.</p>
-      </div>
-      <div class="service-item">
-        <h3>Cloud Services</h3>
-        <p>Deploy and manage scalable cloud infrastructure that optimizes speed, storage, and security. Whether it's AWS, Azure, or another provider, we make the cloud work for you.</p>
-      </div>
-      <div class="service-item">
-        <h3>Software Development</h3>
-        <p>Robust and efficient software solutions tailored to your business processes. From tools and automation to custom platforms, we build high-quality software that solves real problems.</p>
-      </div>
+
+    <div class="service-block">
+      <h3>Custom Software Development</h3>
+      <p>We develop tailored software solutions that solve real-world problems. From business automation tools to internal systems, everything is built for performance, scalability, and reliability. We turn your ideas into functional products you can depend on.</p>
+    </div>
+
+    <div class="service-block">
+      <h3>Web Design & Development</h3>
+      <p>Your website is your online identity — we make sure it’s bold, modern, and performs flawlessly. Using the latest technologies, we create responsive, accessible, and stunning websites that convert visitors into customers.</p>
+    </div>
+
+    <div class="service-block">
+      <h3>eCommerce Integration</h3>
+      <p>Ready to sell online? We help you launch powerful eCommerce platforms that are secure, user-friendly, and optimized for conversions. From product listings to payment gateways, we build everything you need to sell successfully.</p>
+    </div>
+
+    <div class="service-block">
+      <h3>Maintenance & Optimization</h3>
+      <p>Keep your site or app fast, secure, and bug-free with our ongoing support and optimization. We proactively monitor performance and apply updates to ensure your product keeps running at full speed — always.</p>
     </div>
   </section>
 
@@ -305,74 +251,42 @@
   </section>
 
   <section id="contact">
-    <h2 class="section-title">Contact Us</h2>
-    <div class="contact-form">
-      <form id="contact-form">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-    </div>
+    <h2 class="section-title">Ready to boost your online presence? Let’s talk.</h2>
+    <form class="contact-form" style="max-width: 600px; margin: auto; display: flex; flex-direction: column; gap: 20px;">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
   </section>
 
+  <footer>
+    © 2025 KaranDevelopment. All rights reserved.
+  </footer>
+
   <script>
-    emailjs.init("bgwo7DNyn3Bq6J8YK");
-
-    document.getElementById('contact-form')?.addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      emailjs.sendForm('service_4tpdp0i', 'template_juh3cew', this)
-        .then(() => {
-          alert("Message sent successfully!");
-          this.reset();
-        })
-        .catch(() => {
-          alert("There was an error sending your message.");
-        });
-    });
-
     function toggleMenu() {
-      const menu = document.getElementById("menu");
-      const burger = document.getElementById("hamburger");
-      menu.classList.toggle("open");
-      burger.classList.toggle("open");
+      document.getElementById('menu').classList.toggle('open');
+      document.getElementById('hamburger').classList.toggle('open');
     }
 
     function closeMenu() {
-      document.getElementById("menu").classList.remove("open");
-      document.getElementById("hamburger").classList.remove("open");
+      document.getElementById('menu').classList.remove('open');
+      document.getElementById('hamburger').classList.remove('open');
     }
 
-    gsap.registerPlugin(ScrollTrigger);
 
-    document.querySelectorAll("section").forEach((section, i) => {
+gsap.utils.toArray("section").forEach(section => {
       gsap.to(section, {
+        opacity: 1,
+        duration: 1,
         scrollTrigger: {
           trigger: section,
           start: "top 80%",
-        },
-        opacity: 1,
-        duration: 1,
-        y: -30,
-        ease: "power2.out",
-        delay: i * 0.1
-      });
-    });
-
-    document.querySelectorAll(".service-item").forEach((card, index) => {
-      gsap.to(card, {
-        scrollTrigger: {
-          trigger: card,
-          start: "top 85%",
-        },
-        y: 0,
-        opacity: 1,
-        duration: 0.8,
-        delay: index * 0.2,
-        ease: "power2.out"
+        }
       });
     });
   </script>
 </body>
 </html>
+<!-- END OF FINAL HTML -->
