@@ -1,4 +1,3 @@
-<!-- START OF FINAL HTML -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,11 +28,17 @@
       top: 0;
       left: 0;
       padding: 20px 40px;
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(0, 0, 0, 0.4); /* Transparent background */
+      backdrop-filter: blur(10px); /* Glassmorphism effect */
       z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      transition: background-color 0.3s ease;
+    }
+
+    header.scrolled {
+      background-color: rgba(0, 0, 0, 0.9); /* Darken when scrolling */
     }
 
     .logo {
@@ -74,7 +79,7 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.95);
+      background: rgba(0, 0, 0, 0.9);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -120,12 +125,15 @@
       text-align: center;
       position: relative;
       opacity: 0;
+      transform: translateY(100px);
     }
 
     .section-title {
       font-size: 3.5rem;
       font-weight: 800;
       margin-bottom: 30px;
+      color: white;
+      transition: transform 0.5s ease, opacity 0.5s ease;
     }
 
     .section-text {
@@ -140,6 +148,9 @@
       max-width: 1000px;
       margin: 60px auto;
       text-align: left;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: transform 0.5s ease-out, opacity 0.5s ease-out;
     }
 
     .service-block h3 {
@@ -166,21 +177,21 @@
 
     .contact-form button {
       padding: 12px 24px;
-      background: #f44336;
+      background: #949494;
       border: none;
       color: white;
       font-weight: 600;
       border-radius: 8px;
       cursor: pointer;
-      transition: background 0.3s;
+      transition: background 0.3s, transform 0.3s;
     }
 
     .contact-form button:hover {
-      background: #d32f2f;
+      background: #949494;
+      transform: scale(1.05);
     }
 
-
-footer {
+    footer {
       text-align: center;
       padding: 20px;
       color: #999;
@@ -190,7 +201,7 @@ footer {
 </head>
 <body>
   <div class="background-effect"></div>
-  <header>
+  <header id="header">
     <div class="logo">KaranDevelopment</div>
     <div class="hamburger" onclick="toggleMenu()" id="hamburger">
       <div></div><div></div><div></div>
@@ -213,32 +224,44 @@ footer {
 
   <section id="about">
     <h2 class="section-title">About Us</h2>
-    <p class="section-text">We are passionate developers who combine creativity with functionality to deliver outstanding results. Whether you're building your first digital product or scaling your business tech, we’re here to help you succeed.</p>
-  </section>
+    <p class="section-text">
+        At KaranDevelopment, we are more than just a development agency — we are your dedicated partners in bringing your digital dreams to life. Our team is fueled by passion, creativity, and an unwavering commitment to delivering innovative solutions that not only meet your needs but exceed your expectations.
+    </p>
+    <p class="section-text">
+        Our mission is simple: to empower businesses through exceptional technology. Whether you're a startup looking to build your first website, or an established company in need of sophisticated software solutions, we are here to help you succeed. Our designs are not just beautiful, they are functional, intuitive, and strategically aligned with your goals.
+    </p>
+    <p class="section-text">
+        We don't just create websites and software; we create experiences. Each project is a reflection of our dedication to quality and our passion for solving complex problems. We approach every challenge with a fresh perspective and provide custom solutions that will elevate your business in the digital space.
+    </p>
+    <p class="section-text">
+        Together, let's build something that moves your audience, transforms your operations, and propels your business forward. At KaranDevelopment, your success is our success.
+    </p>
+</section>
 
-  <section id="services">
-    <h2 class="section-title">Our Services</h2>
+<section id="services">
+  <h2 class="section-title">What We Offer</h2>
 
-    <div class="service-block">
-      <h3>Custom Software Development</h3>
-      <p>We develop tailored software solutions that solve real-world problems. From business automation tools to internal systems, everything is built for performance, scalability, and reliability. We turn your ideas into functional products you can depend on.</p>
-    </div>
+  <div class="service-block">
+    <h3>Software Development</h3>
+    <p>We create custom software solutions that solve specific business challenges. From developing powerful internal systems to business automation tools, we ensure performance, scalability, and ease of use in every solution we build.</p>
+  </div>
 
-    <div class="service-block">
-      <h3>Web Design & Development</h3>
-      <p>Your website is your online identity — we make sure it’s bold, modern, and performs flawlessly. Using the latest technologies, we create responsive, accessible, and stunning websites that convert visitors into customers.</p>
-    </div>
+  <div class="service-block">
+    <h3>Web Design & Development</h3>
+    <p>Your website should reflect your brand and engage users. We design and build modern, responsive websites that are not only visually appealing but also optimized for functionality, performance, and a seamless user experience.</p>
+  </div>
 
-    <div class="service-block">
-      <h3>eCommerce Integration</h3>
-      <p>Ready to sell online? We help you launch powerful eCommerce platforms that are secure, user-friendly, and optimized for conversions. From product listings to payment gateways, we build everything you need to sell successfully.</p>
-    </div>
+  <div class="service-block">
+    <h3>eCommerce Integration</h3>
+    <p>Our eCommerce solutions are designed to enhance your online store’s performance. We integrate secure, user-friendly platforms with features like inventory management, payment processing, and optimized checkout to drive conversions and customer satisfaction.</p>
+  </div>
 
-    <div class="service-block">
-      <h3>Maintenance & Optimization</h3>
-      <p>Keep your site or app fast, secure, and bug-free with our ongoing support and optimization. We proactively monitor performance and apply updates to ensure your product keeps running at full speed — always.</p>
-    </div>
-  </section>
+  <div class="service-block">
+    <h3>Maintenance & Optimization</h3>
+    <p>We don’t just build and launch — we ensure your system or website continues to perform at its best. Our ongoing maintenance services include performance optimization, security updates, and regular improvements to keep your product running smoothly and efficiently.</p>
+  </div>
+</section>
+
 
   <section id="portfolio">
     <h2 class="section-title">Portfolio</h2>
@@ -253,9 +276,9 @@ footer {
   <section id="contact">
     <h2 class="section-title">Ready to boost your online presence? Let’s talk.</h2>
     <form class="contact-form" style="max-width: 600px; margin: auto; display: flex; flex-direction: column; gap: 20px;">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Your Email" required>
-      <textarea rows="5" placeholder="Your Message" required></textarea>
+      <input type="text" id="name" placeholder="Your Name" required>
+      <input type="email" id="email" placeholder="Your Email" required>
+      <textarea rows="5" id="message" placeholder="Your Message" required></textarea>
       <button type="submit">Send Message</button>
     </form>
   </section>
@@ -265,6 +288,16 @@ footer {
   </footer>
 
   <script>
+    // Menu scroll effect
+    window.addEventListener("scroll", function () {
+      const header = document.getElementById("header");
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+    });
+
     function toggleMenu() {
       document.getElementById('menu').classList.toggle('open');
       document.getElementById('hamburger').classList.toggle('open');
@@ -275,18 +308,44 @@ footer {
       document.getElementById('hamburger').classList.remove('open');
     }
 
-
-gsap.utils.toArray("section").forEach(section => {
+    // GSAP animation for sections
+    gsap.utils.toArray("section").forEach(section => {
       gsap.to(section, {
         opacity: 1,
+        y: 0,
         duration: 1,
+        delay: 0.2,
+        ease: "power4.out",
         scrollTrigger: {
           trigger: section,
           start: "top 80%",
         }
       });
     });
+
+    // Service Block animation
+    gsap.utils.toArray(".service-block").forEach(block => {
+      gsap.to(block, {
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        delay: 0.3,
+        ease: "power4.out",
+        scrollTrigger: {
+          trigger: block,
+          start: "top 80%",
+        }
+      });
+    });
+
+    // Homepage Title Animation
+    gsap.from("#home h1", {
+      opacity: 0,
+      y: 50,
+      duration: 1.2,
+      ease: "power3.out",
+      delay: 0.2
+    });
   </script>
 </body>
 </html>
-<!-- END OF FINAL HTML -->
